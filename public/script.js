@@ -38,3 +38,22 @@ function addMessage(text, type) {
     // Scroll to bottom
     chatbox.scrollTop = chatbox.scrollHeight;
 }
+
+// Lecture Notes Summarizer
+function summarizeNotes() {
+    const notes = document.getElementById("notes").value.trim();
+    const summaryDiv = document.getElementById("summary");
+
+    if (!notes) {
+        summaryDiv.textContent = "Please paste some notes to summarize.";
+        return;
+    }
+
+    // Mock summarization logic
+    const sentences = notes.split(/[.!?]/).filter(s => s.trim().length > 0);
+    const keyPoints = sentences.slice(0, 3); // Take first 3 sentences as summary
+    summaryDiv.textContent = "Summary: " + keyPoints.join(". ") + ".";
+
+    // Scroll summary into view
+    summaryDiv.scrollIntoView({ behavior: "smooth" });
+}
